@@ -1,0 +1,21 @@
+name: Site checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify source
+        run: node tests/verify.mjs
+      - name: Build public site
+        run: node scripts/build.mjs
+      - name: Verify deployment output
+        run: node tests/verify-dist.mjs
