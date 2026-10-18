@@ -1,0 +1,10 @@
+# Generated Cloudflare Pages output
+dist/
+# Local tools and operating system artifacts
+node_modules/
+.DS_Store
+Thumbs.db
+# Never commit credentials
+.env
+.env.*
+!.env.example
